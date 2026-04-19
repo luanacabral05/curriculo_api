@@ -1,3 +1,4 @@
+import pg from 'pg';
 import Sequelize from 'sequelize';
 import pessoaModel from './pessoa';
 import formacaoModel from './formacao';
