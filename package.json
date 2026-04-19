@@ -1,0 +1,23 @@
+{
+  "name": "curriculo_api",
+  "version": "1.0.0",
+  "description": "API REST de Currículo - AOS 2026.1",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node api/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.2.1",
+    "pg": "^8.20.0",
+    "sequelize": "^6.37.8",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/node": "^7.27.1",
+    "@babel/preset-env": "^7.27.1",
+    "nodemon": "^3.1.10"
+  }
+}
