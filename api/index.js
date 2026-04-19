@@ -42,15 +42,19 @@ app.use((error, req, res, next) => {
 
 const eraseDatabaseOnSync = process.env.ERASE_DATABASE_ON_SYNC === 'true';
 
-sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
-  if (eraseDatabaseOnSync) {
-    await createSeedData();
-  }
-  // app.listen só funciona em ambiente local — no Vercel (serverless) não é necessário
-  if (process.env.NODE_ENV !== 'production') {
-    app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
-  }
-});
+sequelize
+  .sync({ force: eraseDatabaseOnSync })
+  .then(async () => {
+    if (eraseDatabaseOnSync) {
+      await createSeedData();
+    }
+    if (process.env.NODE_ENV !== 'production') {
+      app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+    }
+  })
+  .catch((err) => {
+    console.error('Erro ao sincronizar banco de dados:', err);
+  });
 
 const createSeedData = async () => {
   // --- Pessoa 1: Luana Cabral da Silva ---
